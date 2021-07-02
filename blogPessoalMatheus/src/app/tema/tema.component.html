@@ -14,11 +14,11 @@
             <div class="row d-flex justify-content-center m-4 mb-5">
                 <div class="col-md-3">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="descricao" placeholder="Digite a descrição do tema">
+                        <input [(ngModel)]='tema.descricao' type="text" class="form-control" id="descricao" placeholder="Digite a descrição do tema">
                     </div>
 
                     <div class="d-flex justify-content-center m-4">
-                        <button class="btn btn-light">Cadastrar</button>
+                        <button class="btn btn-light" (click)='postarTema()'>Cadastrar</button>
                     </div>
 
                 </div>
@@ -51,21 +51,19 @@
             <table class="table table-hover">
                 <thead>
                   <tr>
-                    <th scope="col">Postagem</th>
-                    <th scope="col">Descrição</th>
-                    <th scope="col">Modificações</th>
+                    <th scope="col" class="text-center">Postagem</th>
+                    <th scope="col" class="text-center">Descrição</th>
+                    <th scope="col" class="text-center">Modificações</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Teste 1</td>
-                    <td>Teste 2</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Teste 1</td>
-                    <td>Teste 2</td>
+                  <tr *ngFor = 'let tema of listaTemas'>
+                    <th class="text-center">{{tema.id}}</th>
+                    <td class="text-center">{{tema.descricao}}</td>
+                    <td class="text-center">
+                        <button class="btn btn-info me-3">Editar</button>
+                        <button class="btn btn-danger">Apagar</button>
+                    </td>
                   </tr>
                 </tbody>
               </table>
